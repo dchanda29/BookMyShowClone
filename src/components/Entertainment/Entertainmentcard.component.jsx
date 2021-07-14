@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "react-slick";
 
 
-const EntertainmentCard=()=>{
+const EntertainmentCard=(props)=>{
 
     return(
         <>
@@ -61,14 +61,15 @@ const EntertainmentCardSlider=()=>{
         ],
       };
     
-    return (<>
-    <Slider{...settings}>
-    {EntertainmentImage.map((image))}
-        
-    </Slider>
-    
-    </>
-    );
+      return (
+        <>
+          <Slider {...settings}>
+            {EntertainmentImage.map((image) => (
+              <EntertainmentCard src={image} />
+            ))}
+          </Slider>
+        </>
+      );
 };
 
 export default EntertainmentCardSlider;
