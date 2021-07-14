@@ -1,8 +1,11 @@
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import {NextArrow,PrevArrow } from ".Arrows.component";
+import HeroSlider from "react-slick";
+
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
+
+//component
+import {NextArrow,PrevArrow } from "./Arrows.component";
 
 
 const HeroCarousal=()=>{
@@ -17,9 +20,10 @@ const HeroCarousal=()=>{
     slidesToScroll:1,
     nextArrow:<NextArrow/>,
     prevArrow:<PrevArrow/>
-  }
+  };
 
     const settings = {
+        arrows:true,
         dots: true,
         infinite: true,
         speed: 500,
@@ -41,29 +45,26 @@ const HeroCarousal=()=>{
     return (
         <>
         <div className="lg:hidden">
-        <HeroSlider{...settingsLg}>
+        <HeroSlider{...settings}>
         {images.map((image)=>(
-            <div className="w-full h-44 md:h-80 py-3">
+            <div className="w-full h-56 md:h-80 py-3">
             <img src={image} alt="testing" className="w-full h-full"></img>
             </div>
         ))}
         </HeroSlider>
         </div>
 
-        <div className="lg:hidden">
+        <div className="hidden lg:block">
         <HeroSlider{...settingsLg}>
         {images.map((image)=>(
-            <div className="w-full h-44 md:h-80 py-3">
-            <img src={image} alt="testing" className="w-full h-full"></img>
+            <div className="w-full h-96 px-2 py-3">
+            <img src={image} alt="testing" className="w-full h-full rounded-md"></img>
             </div>
         ))}
         </HeroSlider>
         </div>
         </>
-
-
     );
-
 };
 
 export default HeroCarousal;
