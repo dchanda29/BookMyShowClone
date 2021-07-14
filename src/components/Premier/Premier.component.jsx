@@ -1,15 +1,18 @@
 import React from "react";
 import Slider from "react-slick";
 
+//components
+import Poster from "../Poster/poster.component";
 
-export const premier=()=>{
+
+export const Premier=()=>{
 
 
     const settings = {
         infinity: false,
         autoplay: false,
         slidesToShow: 5,
-        slidesToScroll: 4,
+        slidesToScroll: 2,
         InitialSlide: 0,
         responsive: [
           {
@@ -38,7 +41,7 @@ export const premier=()=>{
         ],
       };
 
-      const PremiumImage=[
+      const PremierImages=[
         {
             src: "https://in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:oi-discovery-catalog@@icons@@premiere-icon.png,ox-322,oy-20/et00047164-sztaxpptsc-portrait.jpg",
             alt: "zack",
@@ -79,7 +82,15 @@ export const premier=()=>{
 
       ];
 
-      return <>
-      <Slider {...settings}></Slider>
-      </>
+      return (
+        <>
+          <Slider {...settings}>
+            {PremierImages.map((image) => (
+              <Poster {...image} />
+            ))}
+          </Slider>
+        </>
+      );
 };
+
+export default Premier;
