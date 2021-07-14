@@ -1,14 +1,20 @@
-import { PreviousMap } from "postcss";
 import React from "react";
+
+//components
+import Navbar from "../components/Navbar/navbar.component";
+
+import HeroCarousal from "../components/HeroCarousal/HeroCarousal.component";
+import HomePage from "../pages/Home.page";
+
+
 const DefaultLayout=(props)=>{
 
-    return(
-        <div>
-            <h1 className="text-xl">Default Layout</h1>
+    return ( <>
+           <Navbar/>
+           <HomePage/>
             {props.children}
 
-        </div>
-
-    );
+        </>
+       );
 };
 export default DefaultLayout;
