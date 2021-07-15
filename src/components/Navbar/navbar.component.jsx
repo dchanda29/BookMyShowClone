@@ -74,15 +74,15 @@ return(
 const Navbar=()=>{
     return( <>
         <nav className="bg-bmsgrey-700 p-4">
-        <div classname="md:hidden">
+        <div className="md:hidden">
             {/*Mobile Screen*/}
             <NavSm/>
             </div>
-        <div classname="hidden md:flex lg:hidden">
+        <div className="hidden md:flex lg:hidden">
             {/*Medium Screen*/}
         <NavMd/> 
         </div>
-        <div classname="hidden w-full lg:flex">
+        <div className="hidden w-full lg:flex">
             {/*Large Screen*/ }
         <NavLg/>
         </div>
