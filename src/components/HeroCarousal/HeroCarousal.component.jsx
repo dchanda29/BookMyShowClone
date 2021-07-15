@@ -1,8 +1,7 @@
 import React from "react";
 import HeroSlider from "react-slick";
 
-// import "slick-carousel/slick/slick.css";
-// import "slick-carousel/slick/slick-theme.css";
+
 
 //component
 import {NextArrow,PrevArrow } from "./Arrows.component";

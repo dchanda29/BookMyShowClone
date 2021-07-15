@@ -3,43 +3,14 @@ import Slider from "react-slick";
 
 //components
 import Poster from "../Poster/poster.component";
+import PosterCarousalSettings from "../../Config/PosterCarousal.config";
+import PremierImages from "../../Config/TempPosters.config";
 
 
 export const Premier=()=>{
 
 
-    const settings = {
-        infinity: false,
-        autoplay: false,
-        slidesToShow: 5,
-        slidesToScroll: 2,
-        InitialSlide: 0,
-        responsive: [
-          {
-            breakpoints: 1024,
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 2,
-              infinite: true,
-            },
-          },
-          {
-            breakpoints: 600,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-              InitialSlide: 1,
-            },
-          },
-          {
-            breakpoints: 480,
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 1,
-            },
-          },
-        ],
-      };
+    
 
       const PremierImages=[
         {
@@ -84,7 +55,12 @@ export const Premier=()=>{
 
       return (
         <>
-          <Slider {...settings}>
+        <div className="">
+          <h3 className="text-white text-xl">
+            Premier
+          </h3>
+        </div>
+          <Slider {...PosterCarousalSettings }>
             {PremierImages.map((image) => (
               <Poster {...image} />
             ))}

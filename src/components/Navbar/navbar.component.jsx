@@ -25,7 +25,9 @@ const NavMd=()=>{
     return(
         <div className="w-full flex items-center gap-3 bg-white px-3 py-2 rounded-md ">
             <BiSearch/>
-            <input type="search" className="w-full bg-transparent border-none focus:outline-none" placeholder="Search for Movies, Events,Plays,Sports And Activities."></input>
+            <input type="search" 
+            className="w-full bg-transparent border-none focus:outline-none"
+            placeholder="Search for Movies, Events,Plays,Sports And Activities."></input>
         </div>
     );
 };
@@ -35,7 +37,7 @@ const NavLg=()=>{
 return(
     <>
     <div className="container mx-auto px-4 flex items-center justify-between ">
-        <div className="flex items-center w-1/2">
+        <div className="flex items-center w-1/2 gap-3">
             
             <div className="w-12 h-12">
                 <img src="https://i.ibb.co/zPBYW3H/imgbin-bookmyshow-office-android-ticket-png.png" 
@@ -76,10 +78,12 @@ const Navbar=()=>{
             {/*Mobile Screen*/}
             <NavSm/>
             </div>
-        <div classname="hidden md:flex lg:hidden">{/*Medium Screen*/}
+        <div classname="hidden md:flex lg:hidden">
+            {/*Medium Screen*/}
         <NavMd/> 
         </div>
-        <div classname="hidden lg:flex">{/*Large Screen*/ }
+        <div classname="hidden w-full lg:flex">
+            {/*Large Screen*/ }
         <NavLg/>
         </div>
         </nav>
