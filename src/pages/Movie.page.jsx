@@ -3,7 +3,7 @@ import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
 // Component
 import MovieHero from "../components/MovieHero/MovieHero.component";
 import Cast from "../components/Cast/Cast.component";
-import PosterSlider from "../components/PosterSlider/PosterSlider.component";
+import PosterSlider from "../components/PosterSlider/PosterSlider.components";
 
 // config
 import TempPosters from "../Config/TempPosters.config";
@@ -113,6 +113,21 @@ const Movie = () => {
               castName="Gal Gadot"
               role="Wonder Woman"
             />
+             <Cast
+              image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/ray-fisher-1072729-17-10-2017-12-14-18.jpg"
+              castName="Ray Fisher"
+              role="Cyborg"
+            />
+             <Cast
+              image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/jason-momoa-25617-24-03-2017-17-39-52.jpg"
+              castName="Jason Momoa"
+              role="Aquaman"
+            />
+             <Cast
+              image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/ezra-miller-34889-24-03-2017-16-04-22.jpg"
+              castName="Ezra Miller"
+              role="The Flash"
+            />
           </div>
         </div>
         <div className="my-8">
@@ -122,7 +137,7 @@ const Movie = () => {
           <PosterSlider
             config={settings}
             images={TempPosters}
-            title="You Might Also like"
+            title="You Might also like"
             isDark={false}
           />
         </div>

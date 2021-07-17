@@ -45,7 +45,7 @@ const NavLg = () => {
         </div>
         <div className="flex items-center gap-3">
           <span className="text-gray-200 text-xs flex items-center cursor-pointer hover:text-white">
-            Bengaluru <BiChevronDown />
+            Lucknow <BiChevronDown />
           </span>
           <button className="bg-red-600 text-white px-2 py-1 text-sm rounded">
             Sign in
@@ -62,7 +62,7 @@ const NavLg = () => {
 const MovieNavbar = () => {
   return (
     <>
-      <nav className="absolute inset-x-0 z-30 bg-opacity-10 backdrop-filter backdrop-blur-lg lg:relative lg:bg-bms-700 p-4">
+      <nav className="absolute inset-x-0 z-30 bg-opacity-10 backdrop-filter backdrop-blur-lg lg:relative lg:bg-bmsgrey-700 p-4">
         <div className="md:hidden">
           {/* Mobile screen */}
           <NavSm />
