@@ -1,4 +1,11 @@
 import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
+import React, {useContext,useState,useEffect} from "react";
+import axios from "axios";
+import { useParams } from "react-router";
+
+
+//context
+import { MovieContext } from "../context/movie.context";
 
 // Component
 import MovieHero from "../components/MovieHero/MovieHero.component";
@@ -7,7 +14,23 @@ import PosterSlider from "../components/PosterSlider/PosterSlider.components";
 
 // config
 import TempPosters from "../Config/TempPosters.config";
+
+
 const Movie = () => {
+  const {id}=useParams();
+  const {movie}=useContext(MovieContext);
+  const [cast,setCast]=useState([]);
+useEffect(()=>{
+  const requestCast=async()=>{
+const getCast=await axios.get(`/movie/${id}/credits`);
+setCast(getCast.data.cast);
+
+  };
+  requestCast();
+},[]);
+
+
+
   const settings = {
     infinite: false,
     speed: 500,
@@ -48,9 +71,7 @@ const Movie = () => {
         <div className="flex flex-col items-start gap-3">
           <h2 className="text-gray-800 font-bold text-2xl">About the movie</h2>
           <p>
-            Bruce Wayne and Diana Prince try to bring the metahumans of Earth
-            together after the death of Clark Kent. Meanwhile, Darkseid sends
-            Steppenwolf to Earth with an army to subjugate humans.
+           {movie.overview}
           </p>
         </div>
         <div className="my-8">
@@ -98,36 +119,13 @@ const Movie = () => {
           <h2 className="text-gray-800 font-bold text-2xl mb-4">Cast & crew</h2>
 
           <div className="flex flex-wrap gap-4">
+            {cast.map((castdata)=>(
             <Cast
-              image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/ben-affleck-292-12-09-2017-05-12-16.jpg"
-              castName="Ben Affleck"
-              role="Batman"
+              image={`{https://image.tmdb.org/t/p/original/${castdata.profile_path}`}
+              castName={castdata.original_name}
+              role={castdata.character}
             />
-            <Cast
-              image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/henry-cavill-23964-04-05-2020-04-25-14.jpg"
-              castName="Henry Cavil"
-              role="Superman"
-            />
-            <Cast
-              image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/gal-gadot-11088-17-10-2017-11-45-36.jpg"
-              castName="Gal Gadot"
-              role="Wonder Woman"
-            />
-             <Cast
-              image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/ray-fisher-1072729-17-10-2017-12-14-18.jpg"
-              castName="Ray Fisher"
-              role="Cyborg"
-            />
-             <Cast
-              image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/jason-momoa-25617-24-03-2017-17-39-52.jpg"
-              castName="Jason Momoa"
-              role="Aquaman"
-            />
-             <Cast
-              image="https://in.bmscdn.com/iedb/artist/images/website/poster/large/ezra-miller-34889-24-03-2017-16-04-22.jpg"
-              castName="Ezra Miller"
-              role="The Flash"
-            />
+            ))};
           </div>
         </div>
         <div className="my-8">
