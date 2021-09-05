@@ -2,7 +2,7 @@ import { FaCcVisa, FaCcApplePay } from "react-icons/fa";
 import React, {useContext,useState,useEffect} from "react";
 import axios from "axios";
 import { useParams } from "react-router";
-
+import Slider from "react-slick"; 
 
 //context
 import { MovieContext } from "../context/movie.context";
@@ -20,6 +20,9 @@ const Movie = () => {
   const {id}=useParams();
   const {movie}=useContext(MovieContext);
   const [cast,setCast]=useState([]);
+  const [similarMovies,setSimilarMovies]=useState([]);
+  const [recommended,setRecommended]=useState([]);
+  
 useEffect(()=>{
   const requestCast=async()=>{
 const getCast=await axios.get(`/movie/${id}/credits`);
@@ -27,7 +30,27 @@ setCast(getCast.data.cast);
 
   };
   requestCast();
-},[]);
+},[id]);
+
+useEffect(() => {
+
+  //async
+  const requestSimilarMovies=async()=>{
+    const getTopRatedMovies=await axios.get(`/movie/${id}/similar`);
+    setSimilarMovies(getTopRatedMovies.data.results);
+  };
+  requestSimilarMovies();
+}, [id]);
+
+useEffect(() => {
+
+  //async
+  const requestRecommendedMovies=async()=>{
+    const getRecommendedMovies=await axios.get(`/movie/${id}/recommendation`);
+    setRecommended(getRecommendedMovies.data.results);
+  };
+  requestRecommendedMovies();
+}, [id]);
 
 
 
@@ -58,6 +81,39 @@ setCast(getCast.data.cast);
         breakpoint: 480,
         settings: {
           slidesToShow: 3,
+          slidesToScroll: 1,
+        },
+      },
+    ],
+  };
+
+  const settingsCast = {
+    infinite: false,
+    speed: 500,
+    slidesToShow: 6,
+    slidesToScroll: 4,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 5,
+          slidesToScroll: 2,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -118,7 +174,8 @@ setCast(getCast.data.cast);
         <div className="my-8">
           <h2 className="text-gray-800 font-bold text-2xl mb-4">Cast & crew</h2>
 
-          <div className="flex flex-wrap gap-4">
+          
+            <Slider {...settingsCast}>
             {cast.map((castdata)=>(
             <Cast
               image={`{https://image.tmdb.org/t/p/original/${castdata.profile_path}`}
@@ -126,7 +183,8 @@ setCast(getCast.data.cast);
               role={castdata.character}
             />
             ))};
-          </div>
+            </Slider>
+        
         </div>
         <div className="my-8">
           <hr />
@@ -134,7 +192,7 @@ setCast(getCast.data.cast);
         <div className="my-8">
           <PosterSlider
             config={settings}
-            images={TempPosters}
+            images={similarMovies}
             title="You Might also like"
             isDark={false}
           />
@@ -145,7 +203,7 @@ setCast(getCast.data.cast);
         <div className="my-8">
           <PosterSlider
             config={settings}
-            images={TempPosters}
+            images={recommended}
             title="BMS XCLUSIVE"
             isDark={false}
           />
