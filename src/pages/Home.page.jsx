@@ -1,5 +1,6 @@
-import React, {useState,useEffect} from "react";
 import axios from "axios";
+import React, {useState,useEffect} from "react";
+
 //Components
 import EntertainmentCardSlider from "../components/Entertainment/Entertainmentcard.component";
 import PosterSlider from "../components/PosterSlider/PosterSlider.components";
