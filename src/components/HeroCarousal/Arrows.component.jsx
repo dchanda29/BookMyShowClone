@@ -13,11 +13,11 @@ export const NextArrow=(props)=>{
     );
 };
 export const PrevArrow=(props)=>{
-    return <>
-     <div className={props.className} 
-     style={{...props.style,backgroundColor:"black"}} 
-     onClick={props.onClick}>
-
-     </div>
-    </>;
+    return (<>
+        <div className={props.className} 
+        style={{...props.style,backgroundColor:"black"}} 
+        onClick={props.onClick}>
+   
+        </div>
+       </>);
 };

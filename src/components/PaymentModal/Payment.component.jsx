@@ -3,7 +3,7 @@ import { Fragment, useState } from "react";
 
 export default function PaymentModal({ isOpen, setIsOpen, price }) {
   function closeModal() {
-    setIsOpen(false);
+    setIsOpen(false)
   }
 
   const launchRazorPay = () => {

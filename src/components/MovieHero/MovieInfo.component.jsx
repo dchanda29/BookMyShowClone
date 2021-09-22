@@ -5,6 +5,7 @@ import PaymentModal from "../PaymentModal/Payment.component";
 
 //context
 import { MovieContext } from '../../context/movie.context';
+
 const MovieInfo = () => {
   const[isOpen,setIsOpen]=useState(false);
   const[price,setPrice]=useState(0);

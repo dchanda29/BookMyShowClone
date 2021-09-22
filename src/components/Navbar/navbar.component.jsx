@@ -11,7 +11,7 @@ const NavSm=()=>{
                 </h3>
                 <span className="text-gray-400  text-xs flex items-center">Lucknow <BiChevronRight/></span>
             </div>
-            <div className="w-8 h-8">
+            <div className="w-8 h-8 text-gray-200">
                 <BiSearch className="w-full h=full"/>
             </div>
 

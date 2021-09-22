@@ -18,7 +18,7 @@ const  Cast= (props) => {
              </h5>
         </div>   
         </div>
-    )
-}
+    );
+};
 
 export default Cast;

@@ -57,7 +57,7 @@ requestNowPlayingMovies();
               <img
                src={`https://image.tmdb.org/t/p/original${image.backdrop_path}`} 
                alt="testing" 
-               className="w-full h-full" />
+               className="w-full h-full rounded-md" />
             </div>
           ))}
         </HeroSlider>
