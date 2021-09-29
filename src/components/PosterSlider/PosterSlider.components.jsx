@@ -7,10 +7,10 @@ import Poster from "../Poster/poster.component";
 import PosterCarouselSettings from "../../Config/PosterCarousal.config";
 
 const PosterSlider = (props) => {
-  const sliderConfig = props.config ? props.config : PosterCarouselSettings;
+  const sliderConfig = props.config ? props.config :PosterCarouselSettings;
 
   return (
-    <>
+    <div>
       <div className="flex flex-col items-start my-2">
         <h3
           className={` text-2xl font-bold ${
@@ -27,12 +27,13 @@ const PosterSlider = (props) => {
           {props.subtitle}
         </p>
       </div>
-      <Slider {...sliderConfig}>
+      <Slider {...sliderConfig}/>
+      <Slider {...PosterCarouselSettings}>
         {props.images.map((image) => (
           <Poster {...image} isDark={props.isDark} />
         ))}
       </Slider>
-    </>
+    </div>
   );
 };
 

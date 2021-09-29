@@ -22,7 +22,7 @@ const PlaysFilter = (props) => {
               ))}
             </div>
           </Disclosure.Panel>
-        </>
+          </>
       )}
     </Disclosure>
   );
