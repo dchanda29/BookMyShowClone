@@ -59,7 +59,7 @@ const Plays = () => {
       </div>
             
         </>
-    )
-}
+    );
+};
 
 export default Plays;

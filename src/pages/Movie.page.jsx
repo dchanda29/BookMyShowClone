@@ -4,16 +4,18 @@ import axios from "axios";
 import { useParams } from "react-router";
 import Slider from "react-slick"; 
 
-//context
-import { MovieContext } from "../context/movie.context";
-
 // Component
 import MovieHero from "../components/MovieHero/MovieHero.component";
 import Cast from "../components/Cast/Cast.component";
 import PosterSlider from "../components/PosterSlider/PosterSlider.components";
 
-// config
-import TempPosters from "../Config/TempPosters.config";
+//context
+import {movie ,MovieContext } from "../context/movie.context";
+
+
+
+// // config
+// import TempPosters from "../Config/TempPosters.config";
 
 
 const Movie = () => {
@@ -23,102 +25,100 @@ const Movie = () => {
   const [similarMovies,setSimilarMovies]=useState([]);
   const [recommended,setRecommended]=useState([]);
   
-useEffect(()=>{
-  const requestCast=async()=>{
-const getCast=await axios.get(`/movie/${id}/credits`);
-setCast(getCast.data.cast);
 
-  };
-  requestCast();
-},[id]);
-
-useEffect(() => {
-
-  //async
-  const requestSimilarMovies=async()=>{
-    const getTopRatedMovies=await axios.get(`/movie/${id}/similar`);
-    setSimilarMovies(getTopRatedMovies.data.results);
-  };
-  requestSimilarMovies();
-}, [id]);
-
-useEffect(() => {
-
-  //async
-  const requestRecommendedMovies=async()=>{
-    const getRecommendedMovies=await axios.get(`/movie/${id}/recommendation`);
-    setRecommended(getRecommendedMovies.data.results);
-  };
-  requestRecommendedMovies();
-}, [id]);
-
-
-
-  const settings = {
-    infinite: false,
-    speed: 500,
-    slidesToShow: 4,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 3,
-          infinite: true,
+  useEffect(() => {
+    const requestCast = async () => {
+        const getCast = await axios.get(`/movie/${id}/credits`);
+        setCast(getCast.data.cast);
+      };
+      requestCast();
+    }, [id]);
+  
+    useEffect(() => {
+      const requestSimilarMovies = async () => {
+          const getSimilarMovies = await axios.get(`/movie/${id}/similar`);
+          setSimilarMovies(getSimilarMovies.data.results);
+      };
+      requestSimilarMovies();
+  }, [id]);
+  
+  useEffect(() => {
+    const requestRecommendedMovies = async () => {
+        const getRecommendedMovies = await axios.get(`/movie/${id}/recommendations`);
+        setRecommended(getRecommendedMovies.data.results);
+    };
+    requestRecommendedMovies();
+  }, [id]);
+     
+    const settings = {
+      infinite: false,
+      speed: 500,
+      slidesToShow: 4,
+      slidesToScroll: 4,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+          },
         },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 2,
-          initialSlide: 2,
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2,
+          },
         },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 3,
-          slidesToScroll: 1,
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 1,
+          },
         },
-      },
-    ],
-  };
+      ],
+    };
+    const settingsCast = {
+      infinite: false,
+      speed: 500,
+      slidesToShow: 6,
+      slidesToScroll: 4,
+      initialSlide: 0,
+      responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 4,
+            slidesToScroll: 3,
+            infinite: true,
+          },
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 5,
+            slidesToScroll: 2,
+            initialSlide: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+          },
+        },
+      ],
+    };
+    
 
-  const settingsCast = {
-    infinite: false,
-    speed: 500,
-    slidesToShow: 6,
-    slidesToScroll: 4,
-    initialSlide: 0,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 4,
-          slidesToScroll: 3,
-          infinite: true,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 5,
-          slidesToScroll: 2,
-          initialSlide: 2,
-        },
-      },
-      {
-        breakpoint: 480,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
+
+  
+       
 
   return (
     <>

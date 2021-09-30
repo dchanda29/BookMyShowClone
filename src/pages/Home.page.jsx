@@ -5,8 +5,8 @@ import React, {useState,useEffect} from "react";
 import EntertainmentCardSlider from "../components/Entertainment/Entertainmentcard.component";
 import PosterSlider from "../components/PosterSlider/PosterSlider.components";
 
-//Config
-import TempPosters from "../Config/TempPosters.config";
+// //Config
+// import TempPosters from "../Config/TempPosters.config";
 
 const HomePage=()=>{
 
@@ -24,7 +24,7 @@ const HomePage=()=>{
     };
     requestPopularMovies();
   }, []);
-
+  console.log({popularMovies});
 
   useEffect(() => {
 
